@@ -10,8 +10,8 @@ public class TimeExtract {
     private List<String> relativeRegexs;
 
     public TimeExtract() {
-        absoluteRegexs = IO.readRegex("TimeRegexAbsolute.txt");
-        relativeRegexs = IO.readRegex("TimeRegexRelative.txt");
+        absoluteRegexs = IO.readRegex("./time_Extraction/TimeRegexAbsolute.txt");
+        relativeRegexs = IO.readRegex("./time_Extraction/TimeRegexRelative.txt");
     }
     
     public List<MatchedTime> extractText(String fileName, int linesNum) {
