@@ -9,7 +9,7 @@ public class TimeExtract {
     private List<String> absoluteRegexs;
     private List<String> relativeRegexs;
 
-    public Matcher() {
+    public TimeExtract() {
         absoluteRegexs = IO.readRegex("./TimeRegexAbsolute.txt");
         relativeRegexs = IO.readRegex("./TimeRegexRelative.txt");
     }
@@ -20,7 +20,7 @@ public class TimeExtract {
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(text);
             while (matcher.find()) {
-                MatchedTime matchedTime = new MatchedTime(TYPE.ABSOLUTE),
+                MatchedTime matchedTime = new MatchedTime(TYPE.ABSOLUTE,
                     regex, matcher.group());
                 result.add(matchedTime);
             }
@@ -29,7 +29,7 @@ public class TimeExtract {
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(text);
             while (matcher.find()) {
-                MatchedTime matchedTime = new MatchedTime(TYPE.RELATIVE),
+                MatchedTime matchedTime = new MatchedTime(TYPE.RELATIVE,
                     regex, matcher.group());
                 result.add(matchedTime);
             }
