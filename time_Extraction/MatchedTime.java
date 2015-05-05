@@ -10,4 +10,14 @@ public class MatchedTime {
         this.regex = regex;
         this.rawString = rawString;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(timeType == TYPE.ABSOLUTE ? "ABSOLUTE " : "RELATIVE ");
+        sb.append(regex);
+        sb.append(" ");
+        sb.append(rawString);
+        return sb.toString();
+    }
 }
