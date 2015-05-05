@@ -79,6 +79,9 @@ public class IO {
     }
     
     public static void writeNormalizedTime(Date date){
+        if(date == null){
+            return;
+        }
         String pattern = "M-dd-yyyy";
         SimpleDateFormat formatter = new SimpleDateFormat(pattern);
         System.out.println(formatter.format(date));
