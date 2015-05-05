@@ -3,15 +3,13 @@ package time_Extraction;
 import java.util.List;
 
 public class main{
+    final static String formatterFileName = "./time_Extraction/formatters.txt";
+    final static String articleFileName = "./time_Extraction/training.txt";
     public static void main(String[] args){
-        test();
-    }
-
-    public static void test() {
-        TimeExtract extractor = new TimeExtract();
-        List<MatchedTime> times = extractor.extractText("./time_Extraction/training.txt", 20);
-        for (MatchedTime time : times) {
-            System.out.println(time);
-        }
+        Process processer = new Process(formatterFileName);
+        processer.extractTime(articleFileName);
+        processer.createDateBundles();
+        processer.formatDate();
+        processer.writeResult();
     }
 }

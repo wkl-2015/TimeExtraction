@@ -4,16 +4,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateBundle {
+    private TYPE timeType;
     private String rawValue;
-    private SimpleDateFormat matchedFormat;
     private Date date;
     
-    public DateBundle(String rawValue){
+    public DateBundle(String rawValue, TYPE timeType){
         this.rawValue = rawValue;
-    }
-    
-    public void setDateFormat(SimpleDateFormat matchedFormat){
-        this.matchedFormat = matchedFormat;
+        this.timeType = timeType;
     }
     
     public void setDate(Date date){
@@ -22,10 +19,6 @@ public class DateBundle {
     
     public String getRawValue(){
         return this.rawValue;
-    }
-    
-    public SimpleDateFormat getDateFormat(){
-        return this.matchedFormat;
     }
     
     public Date getDate(){
