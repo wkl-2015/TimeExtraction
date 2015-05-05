@@ -1,14 +1,17 @@
 package time_Extraction;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
-public class Matcher {
+public class TimeExtract {
     private List<String> absoluteRegexs;
     private List<String> relativeRegexs;
 
     public Matcher() {
-        absoluteRegexs = readRegex("./TimeRegexAbsolute.txt");
-        relativeRegexs = readRegex("./TimeRegexRelative.txt");
+        absoluteRegexs = IO.readRegex("./TimeRegexAbsolute.txt");
+        relativeRegexs = IO.readRegex("./TimeRegexRelative.txt");
     }
     
     public List<MatchedTime> extractText(String text) {
