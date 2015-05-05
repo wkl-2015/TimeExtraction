@@ -9,7 +9,7 @@ public class main{
 
     public static void test() {
         TimeExtract extractor = new TimeExtract();
-        List<MatchedTime> times = extractor.extractText("training.txt", 20);
+        List<MatchedTime> times = extractor.extractText("./time_Extraction/training.txt", 20);
         for (MatchedTime time : times) {
             System.out.println(time);
         }
