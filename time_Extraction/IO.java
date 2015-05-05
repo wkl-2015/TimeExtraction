@@ -1,23 +1,86 @@
 package time_Extraction;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class IO {
+    public static final int LINESNUM = 20;
+    
     public static List<String> readRegex(String fileName){
-        
-        return null;
+        List<String> regexes = new ArrayList<String>();
+        try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            for(String line; (line = br.readLine()) != null; ) {
+                if(line == null || line.isEmpty() || line.substring(0, 2).equals("//")){
+                    continue;
+                }
+                regexes.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Read file " + fileName + " failed!");
+        } 
+        return regexes;
     }
     
     public static List<String> readArticle(String fileName, int linesNum){
-        return null;
+        if(linesNum < 1){
+            System.out.println("Warning: you must read at least oneline each time, setted as default");
+            linesNum = LINESNUM;
+        }
+        List<String> paragraphs = new ArrayList<String>();
+        try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            int i = linesNum;
+            StringBuilder builder = new StringBuilder();
+            for(String line; (line = br.readLine()) != null; ) {
+                if(i == 0){
+                    paragraphs.add(builder.toString());
+                    builder.setLength(0);
+                    i = linesNum;
+                    continue;
+                }
+                else if(line == null || line.isEmpty() || line.substring(0, 2).equals("//")){
+                    continue;
+                }
+                else{
+                    builder.append(line + " ");
+                    i--;
+                }
+            }
+            if(builder.length() > 0){
+                paragraphs.add(builder.toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Read file " + fileName + " failed!");
+        }
+        return paragraphs;
     }
     
     public static List<String> readDateFormat(String fileName){
-        return null;
+        List<String> formats = new ArrayList<String>();
+        try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            for(String line; (line = br.readLine()) != null; ) {
+                if(line == null || line.isEmpty() || line.substring(0, 2).equals("//")){
+                    continue;
+                }
+                formats.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Read file " + fileName + " failed!");
+        } 
+        return formats;
     }
     
     public static void writeNormalizedTime(Date date){
-        
+        String pattern = "M-dd-yyyy";
+        SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+        System.out.println(formatter.format(date));
     }
 }
