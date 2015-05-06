@@ -31,21 +31,30 @@ public class TimeExtract {
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(input);
             while (matcher.find()) {
-                MatchedTime matchedTime = new MatchedTime(TYPE.ABSOLUTE, regex,
-                        matcher.group());
+                String rawString = matcher.group();
+                MatchedTime matchedTime = 
+                    new MatchedTime(TYPE.ABSOLUTE, regex, rawString);
                 result.add(matchedTime);
+                input.replace(rawString, 
+                    fixedLengthString("*", rawString.length()));
             }
         }
         for (String regex : relativeRegexs) {
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(input);
             while (matcher.find()) {
-                MatchedTime matchedTime = new MatchedTime(TYPE.RELATIVE, regex,
-                        matcher.group());
+                String rawString = matcher.group();
+                MatchedTime matchedTime = 
+                    new MatchedTime(TYPE.RELATIVE, regex, rawString);
                 result.add(matchedTime);
+                input.replace(rawString, 
+                    fixedLengthString("*", rawString.length()));
             }
         }
-
         return result;
+    }
+
+    private String fixedLengthString(String string, int length) {
+        return String.format("%1$"+length+ "s", string);
     }
 }

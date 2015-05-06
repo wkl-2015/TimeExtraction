@@ -17,7 +17,6 @@ year earlier
 \d{1,4} years later
 \d{1,2} months ago
 \d{1,2} months later
-\d{4}
 // Remains to be today.
 (earlier|later)? this (morning|noon|afternoon|evening)
 // Match a time interval.
