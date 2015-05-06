@@ -85,6 +85,6 @@ public class IO {
         }
 //        String pattern = "M-dd-yyyy";
 //        SimpleDateFormat formatter = new SimpleDateFormat(pattern);
-        System.out.println(timeBundle.getCalendar().getTime().toString() + " || " + timeBundle.getRawValue());
+        System.out.println("** " + timeBundle.getCalendar().getTime().toString() + " || " + timeBundle.getRawValue() + " || " + timeBundle.getType().toString());
     }
 }
