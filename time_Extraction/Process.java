@@ -43,7 +43,7 @@ public class Process {
     
     public void writeResult(){
         for(TimeBundle timeBundle: timeBundles){
-            IO.writeNormalizedTime(timeBundle.getCalendar());
+            IO.writeNormalizedTime(timeBundle);
         }
     }
 }

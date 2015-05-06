@@ -79,12 +79,12 @@ public class IO {
         return formats;
     }
     
-    public static void writeNormalizedTime(Calendar calendar){
-        if(calendar == null){
+    public static void writeNormalizedTime(TimeBundle timeBundle){
+        if(timeBundle.getCalendar() == null){
             return;
         }
-        String pattern = "M-dd-yyyy";
-        SimpleDateFormat formatter = new SimpleDateFormat(pattern);
-        System.out.println(formatter.format(calendar.getTime()));
+//        String pattern = "M-dd-yyyy";
+//        SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+        System.out.println(timeBundle.getCalendar().getTime().toString() + " || " + timeBundle.getRawValue());
     }
 }

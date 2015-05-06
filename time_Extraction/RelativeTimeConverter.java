@@ -11,7 +11,8 @@ public class RelativeTimeConverter {
     }
     
     public Calendar convert(String relativeTime){
-        Calendar result = referenceTime;
+        Calendar result = Calendar.getInstance();
+        result.setTimeInMillis(referenceTime.getTimeInMillis());
         if(relativeTime.contains("today")){
             return result;
         }
@@ -37,7 +38,7 @@ public class RelativeTimeConverter {
         }
         if(relativeTime.contains("last year") || relativeTime.contains("past year")
                 || relativeTime.contains("year ago") || relativeTime.contains("year earlier")){
-            result.add(Calendar.MONTH, -1);
+            result.add(Calendar.YEAR, -1);
             return result;
         }
         if(relativeTime.contains("years ago") || relativeTime.contains("years earlier")){

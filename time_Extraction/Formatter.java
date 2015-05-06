@@ -25,7 +25,7 @@ public class Formatter {
                 return resultDate;
             }
         }
-        System.out.println("Date parse failed: " + rawDate);
+        System.out.println("Can't parse this absolute time: " + rawDate);
         return null;
     }
     
