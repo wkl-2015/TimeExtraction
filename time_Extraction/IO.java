@@ -45,9 +45,10 @@ public class IO {
                     i = linesNum;
                     continue;
                 }
-                else if(line == null || line.isEmpty() || 
-                    (line.length() > 1 && line.substring(0, 2).equals("//"))) {
-                    continue;
+                else if(line == null || line.isEmpty()){
+                    if(line.length() > 1 && line.substring(0, 2).equals("//")){
+                        continue;
+                    }
                 }
                 else{
                     builder.append(line + " ");

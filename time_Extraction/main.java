@@ -12,7 +12,7 @@ public class main{
     
     public static void main(String[] args){
         Process processer = new Process(formatterFileName, referenceTime);
-        processer.extractTime(articleFileName);
+        processer.extractTimeFromFile(articleFileName);
         processer.createDateBundles();
         processer.formatDate();
         processer.writeResult();
