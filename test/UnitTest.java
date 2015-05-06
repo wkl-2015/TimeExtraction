@@ -25,8 +25,13 @@ public class UnitTest {
     
     
     @Test
-    public void test() {
-        processInput("5/27/1979", "27-05-2979");
+    public void test1() {
+        processInput("5/27/1979", "27-05-1979");
+    }
+    
+    @Test
+    public void test2() {
+        processInput("jan 9, 2007", "09-01-2007");
     }
     
     public void processInput(String input, String expectedOutput){
