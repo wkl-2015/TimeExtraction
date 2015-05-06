@@ -3,6 +3,7 @@ package time_Extraction;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -16,8 +17,8 @@ public class Formatter {
         }
     }
     
-    public Date format(String rawDate){
-        Date resultDate = new Date();
+    public Calendar format(String rawDate){
+        Calendar resultDate = Calendar.getInstance();
         for(SimpleDateFormat formatter: formatters){
             resultDate = parse(formatter, rawDate);
             if(resultDate != null){
@@ -28,13 +29,13 @@ public class Formatter {
         return null;
     }
     
-    private Date parse(SimpleDateFormat sdf, String rawStr){
-        Date date = new Date();
+    private Calendar parse(SimpleDateFormat sdf, String rawStr){
+        Calendar myCal = Calendar.getInstance();
         try{
-            date = sdf.parse(rawStr);
+            myCal.setTime(sdf.parse(rawStr));
         } catch(ParseException e){
-            date = null;
+            myCal = null;
         }
-        return date;
+        return myCal;
     }
 }

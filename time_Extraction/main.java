@@ -1,12 +1,17 @@
 package time_Extraction;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class main{
     final static String formatterFileName = "./time_Extraction/formatters.txt";
     final static String articleFileName = "./time_Extraction/training.txt";
+    final static Calendar referenceTime = Calendar.getInstance();
+    
     public static void main(String[] args){
-        Process processer = new Process(formatterFileName);
+        Process processer = new Process(formatterFileName, referenceTime);
         processer.extractTime(articleFileName);
         processer.createDateBundles();
         processer.formatDate();

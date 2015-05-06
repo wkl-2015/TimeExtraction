@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class IO {
             StringBuilder builder = new StringBuilder();
             for(String line; (line = br.readLine()) != null; ) {
                 if(i == 0){
-                    paragraphs.add(builder.toString());
+                    paragraphs.add(builder.toString().toLowerCase());
                     builder.setLength(0);
                     i = linesNum;
                     continue;
@@ -53,7 +54,7 @@ public class IO {
                 }
             }
             if(builder.length() > 0){
-                paragraphs.add(builder.toString());
+                paragraphs.add(builder.toString().toLowerCase());
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -78,12 +79,12 @@ public class IO {
         return formats;
     }
     
-    public static void writeNormalizedTime(Date date){
-        if(date == null){
+    public static void writeNormalizedTime(Calendar calendar){
+        if(calendar == null){
             return;
         }
         String pattern = "M-dd-yyyy";
         SimpleDateFormat formatter = new SimpleDateFormat(pattern);
-        System.out.println(formatter.format(date));
+        System.out.println(formatter.format(calendar.getTime()));
     }
 }

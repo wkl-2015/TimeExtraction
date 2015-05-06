@@ -1,6 +1,7 @@
 package time_Extraction;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -9,9 +10,12 @@ public class Process {
     private List<DateBundle> dateBundles = new ArrayList<DateBundle>();
     private Formatter formatter;
     private RelativeTimeConverter converter;
+    private Calendar referenceTime;
     
-    public Process(String formattersFileName){
-        formatter = new Formatter(formattersFileName);
+    public Process(String formattersFileName, Calendar referenceTime){
+        this.formatter = new Formatter(formattersFileName);
+        this.referenceTime = referenceTime;
+        this.converter = new RelativeTimeConverter(this.referenceTime);
     }
     
     public void extractTime(String articleFileName){
@@ -28,19 +32,19 @@ public class Process {
     public void formatDate(){
         for(DateBundle dateBundle: dateBundles){
             if(dateBundle.getType() == TYPE.ABSOLUTE){
-                Date date = formatter.format(dateBundle.getRawValue());
-                dateBundle.setDate(date);
+                Calendar calendar = formatter.format(dateBundle.getRawValue());
+                dateBundle.setCalendar(calendar);
             }
             else{
-                Date date = converter.convert(dateBundle.getRawValue());
-                dateBundle.setDate(date);
+                Calendar date = converter.convert(dateBundle.getRawValue());
+                dateBundle.setCalendar(date);
             }
         }
     }
     
     public void writeResult(){
         for(DateBundle dateBundle: dateBundles){
-            IO.writeNormalizedTime(dateBundle.getDate());
+            IO.writeNormalizedTime(dateBundle.getCalendar());
         }
     }
 }
