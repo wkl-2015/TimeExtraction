@@ -85,8 +85,8 @@ public class IO {
         if(timeBundle.getCalendar() == null){
             return;
         }
-//        String pattern = "M-dd-yyyy";
-//        SimpleDateFormat formatter = new SimpleDateFormat(pattern);
-        System.out.println("** " + timeBundle.getCalendar().getTime().toString() + " || " + timeBundle.getRawValue() + " || " + timeBundle.getType().toString());
+        String pattern = "MM-dd-yyyy h:mm a";
+        SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+        System.out.println("** " + formatter.format(timeBundle.getCalendar().getTime()) + " || " + timeBundle.getRawValue() + " || " + timeBundle.getType().toString());
     }
 }

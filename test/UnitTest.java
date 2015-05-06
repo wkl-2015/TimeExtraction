@@ -26,12 +26,12 @@ public class UnitTest {
     
     @Test
     public void test1() {
-        processInput("5/27/1979", "27-05-1979");
+        processInput("5/27/1979", "05-27-1979");
     }
     
     @Test
     public void test2() {
-        processInput("jan 9, 2007", "09-01-2007");
+        processInput("jan 9, 2007", "01-09-2007");
     }
     
     public void processInput(String input, String expectedOutput){
@@ -40,7 +40,7 @@ public class UnitTest {
         processer.formatDate();
         List<TimeBundle> timeBundles = processer.getTimeBundles();
         Calendar myCal = timeBundles.get(0).getCalendar();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
         dateFormat.setTimeZone(myCal.getTimeZone());
         String normalizedString = dateFormat.format(myCal.getTime());
         assertEquals(expectedOutput, normalizedString);
