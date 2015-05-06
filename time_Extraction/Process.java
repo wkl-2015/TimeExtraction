@@ -5,21 +5,28 @@ import java.util.Calendar;
 import java.util.List;
 
 public class Process {
-    private List<MatchedTime> matchedTimes = new ArrayList<MatchedTime>();
-    private List<TimeBundle> timeBundles = new ArrayList<TimeBundle>();
+    private List<MatchedTime> matchedTimes;
+    private List<TimeBundle> timeBundles;
     private Formatter formatter;
     private RelativeTimeConverter converter;
     private Calendar referenceTime;
     
     public Process(String formattersFileName, Calendar referenceTime){
+        matchedTimes = new ArrayList<MatchedTime>();
+        timeBundles = new ArrayList<TimeBundle>();
         this.formatter = new Formatter(formattersFileName);
         this.referenceTime = referenceTime;
         this.converter = new RelativeTimeConverter(this.referenceTime);
     }
     
-    public void extractTime(String articleFileName){
+    public void extractTimeFromFile(String articleFileName){
         TimeExtract extractor = new TimeExtract();
-        matchedTimes = extractor.extractText(articleFileName, 20);
+        matchedTimes = extractor.extractFile(articleFileName, 20);
+    }
+    
+    public void extractTimeFromInput(String input){
+        TimeExtract extractor = new TimeExtract();
+        matchedTimes = extractor.extractInput(input);
     }
     
     public void createDateBundles(){
@@ -45,5 +52,14 @@ public class Process {
         for(TimeBundle timeBundle: timeBundles){
             IO.writeNormalizedTime(timeBundle);
         }
+    }
+    
+    public List<TimeBundle> getTimeBundles(){
+        return this.timeBundles;
+    }
+    
+    public void clear(){
+        matchedTimes = new ArrayList<MatchedTime>();
+        timeBundles = new ArrayList<TimeBundle>();
     }
 }
