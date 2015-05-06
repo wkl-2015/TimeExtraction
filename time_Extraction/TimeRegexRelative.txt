@@ -17,15 +17,16 @@ year earlier
 \d{1,4} years later
 \d{1,2} months ago
 \d{1,2} months later
-\d{1,2} \d{4}
-\d{1,2} \d{1,2}, \d{1,4}
-\d{1,2}\d{1,2},\d{1,4}
 \d{4}
-\d{1,4} / \d{1,2} / \d{1,4}
-\d{1,4}/\d{1,2}/\d{1,4}
 // Remains to be today.
 (earlier|later)? this (morning|noon|afternoon|evening)
 // Match a time interval.
 (earlier|later)? this week
 (earlier|later)? this month
 (earlier|later)? this year
+// e.g. friday
+//\b(monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun)\b
+// e.g. jan 9
+//(january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec)(\p{Blank})?\d{1,2}
+// e.g. jan 2007
+//(january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec)(\p{Blank})?\d{4}
