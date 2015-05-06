@@ -90,8 +90,7 @@ public class IO {
         SimpleDateFormat formatter = new SimpleDateFormat(pattern);
         System.out.print("** "
                 + formatter.format(timeBundle.getCalendar().getTime()) + " || "
-                + timeBundle.getRawValue() + " || "
-                + timeBundle.getType().toString());
+                + timeBundle.getRawValue());
         if(timeBundle.getDateFormat() != null){
             System.out.print(" || " + timeBundle.getDateFormat().toPattern());
         }
