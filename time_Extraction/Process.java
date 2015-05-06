@@ -2,12 +2,11 @@ package time_Extraction;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class Process {
     private List<MatchedTime> matchedTimes = new ArrayList<MatchedTime>();
-    private List<DateBundle> dateBundles = new ArrayList<DateBundle>();
+    private List<TimeBundle> timeBundles = new ArrayList<TimeBundle>();
     private Formatter formatter;
     private RelativeTimeConverter converter;
     private Calendar referenceTime;
@@ -25,26 +24,26 @@ public class Process {
     
     public void createDateBundles(){
         for(MatchedTime time: matchedTimes){
-            dateBundles.add(new DateBundle(time.rawString, time.timeType)); 
+            timeBundles.add(new TimeBundle(time.rawString, time.timeType)); 
         }
     }
     
     public void formatDate(){
-        for(DateBundle dateBundle: dateBundles){
-            if(dateBundle.getType() == TYPE.ABSOLUTE){
-                Calendar calendar = formatter.format(dateBundle.getRawValue());
-                dateBundle.setCalendar(calendar);
+        for(TimeBundle timeBundle: timeBundles){
+            if(timeBundle.getType() == TYPE.ABSOLUTE){
+                Calendar calendar = formatter.format(timeBundle.getRawValue());
+                timeBundle.setCalendar(calendar);
             }
             else{
-                Calendar date = converter.convert(dateBundle.getRawValue());
-                dateBundle.setCalendar(date);
+                Calendar date = converter.convert(timeBundle.getRawValue());
+                timeBundle.setCalendar(date);
             }
         }
     }
     
     public void writeResult(){
-        for(DateBundle dateBundle: dateBundles){
-            IO.writeNormalizedTime(dateBundle.getCalendar());
+        for(TimeBundle timeBundle: timeBundles){
+            IO.writeNormalizedTime(timeBundle.getCalendar());
         }
     }
 }

@@ -4,12 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class DateBundle {
+public class TimeBundle {
     private TYPE timeType;
     private String rawValue;
     private Calendar calendar;
     
-    public DateBundle(String rawValue, TYPE timeType){
+    public TimeBundle(String rawValue, TYPE timeType){
         this.rawValue = rawValue;
         this.timeType = timeType;
     }
