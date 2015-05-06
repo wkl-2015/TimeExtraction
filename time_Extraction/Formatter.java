@@ -17,15 +17,16 @@ public class Formatter {
         }
     }
     
-    public Calendar format(String rawDate){
+    public Calendar format(TimeBundle timeBundle){
         Calendar resultDate = Calendar.getInstance();
         for(SimpleDateFormat formatter: formatters){
-            resultDate = parse(formatter, rawDate);
+            resultDate = parse(formatter, timeBundle.getRawValue());
             if(resultDate != null){
+                timeBundle.setDateFormat(formatter);
                 return resultDate;
             }
         }
-        System.out.println("Can't parse this absolute time: " + rawDate);
+        System.out.println("Can't parse this absolute time: " + timeBundle.getRawValue());
         return null;
     }
     

@@ -8,6 +8,7 @@ public class TimeBundle {
     private TYPE timeType;
     private String rawValue;
     private Calendar calendar;
+    private SimpleDateFormat dateFormat;
     
     public TimeBundle(String rawValue, TYPE timeType){
         this.rawValue = rawValue;
@@ -16,6 +17,14 @@ public class TimeBundle {
     
     public void setCalendar(Calendar calendar){
         this.calendar = calendar;
+    }
+    
+    public void setDateFormat(SimpleDateFormat format){
+        this.dateFormat = format;
+    }
+    
+    public SimpleDateFormat getDateFormat(){
+        return this.dateFormat;
     }
     
     public String getRawValue(){
