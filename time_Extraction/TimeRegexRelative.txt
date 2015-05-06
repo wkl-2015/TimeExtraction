@@ -3,6 +3,8 @@ yesterday
 tomorrow
 next month
 a month later
+last month
+a month ago
 next year
 last year
 past year
@@ -11,3 +13,19 @@ a year earlier
 one year ago
 one year earlier
 year earlier
+\d{1,4} years ago
+\d{1,4} years later
+\d{1,2} months ago
+\d{1,2} months later
+\d{1,2} \d{4}
+\d{1,2} \d{1,2}, \d{1,4}
+\d{1,2}\d{1,2},\d{1,4}
+\d{4}
+\d{1,4} / \d{1,2} / \d{1,4}
+\d{1,4}/\d{1,2}/\d{1,4}
+// Remains to be today.
+(earlier|later)? this (morning|noon|afternoon|evening)
+// Match a time interval.
+(earlier|later)? this week
+(earlier|later)? this month
+(earlier|later)? this year
