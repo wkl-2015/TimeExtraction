@@ -38,7 +38,7 @@ public class Process {
     public void formatDate(){
         for(TimeBundle timeBundle: timeBundles){
             if(timeBundle.getType() == TYPE.ABSOLUTE){
-                Calendar calendar = formatter.format(timeBundle.getRawValue());
+                Calendar calendar = formatter.format(timeBundle);
                 timeBundle.setCalendar(calendar);
             }
             else{

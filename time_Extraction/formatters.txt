@@ -15,6 +15,7 @@ MMM d, yyyy h:mma
 MMM d, yyyy h:mm a 
 MMM d, yyyy h:mm\u00a0a 
 MMM d, yyyy
+MMM d yyyy
 d MMM, yyyy h a 
 d MMM, yyyy 
 d MMM,yyyy h a 
