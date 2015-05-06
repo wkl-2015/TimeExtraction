@@ -120,6 +120,7 @@ E d MMM, yyyy h:m a
 E d MMM yy h:m a 
 E d MMM yy H:m 
 Ed MMM yy HH:mm
+M/dd/yyyy
 dd/M/yyyy
 HH:mm'N' 
 MM dd h:m a 
