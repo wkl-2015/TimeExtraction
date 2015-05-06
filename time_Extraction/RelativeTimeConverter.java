@@ -61,6 +61,12 @@ public class RelativeTimeConverter {
             result.add(Calendar.MONTH, year);
             return result;
         }
+        if(relativeTime.contains("this morning")){
+            result.set(Calendar.HOUR, 8);
+            result.set(Calendar.MINUTE, 0);
+            result.set(Calendar.AM_PM, Calendar.AM);
+            return result;
+        }
 
       
         System.out.println("Can't convert: " + relativeTime);
