@@ -24,4 +24,8 @@ public class DateBundle {
     public Date getDate(){
         return this.date;
     }
+    
+    public TYPE getType(){
+        return this.timeType;
+    }
 }

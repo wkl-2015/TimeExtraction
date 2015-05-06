@@ -8,6 +8,7 @@ public class Process {
     private List<MatchedTime> matchedTimes = new ArrayList<MatchedTime>();
     private List<DateBundle> dateBundles = new ArrayList<DateBundle>();
     private Formatter formatter;
+    private RelativeTimeConverter converter;
     
     public Process(String formattersFileName){
         formatter = new Formatter(formattersFileName);
@@ -26,8 +27,14 @@ public class Process {
     
     public void formatDate(){
         for(DateBundle dateBundle: dateBundles){
-            Date date = formatter.format(dateBundle.getRawValue());
-            dateBundle.setDate(date);
+            if(dateBundle.getType() == TYPE.ABSOLUTE){
+                Date date = formatter.format(dateBundle.getRawValue());
+                dateBundle.setDate(date);
+            }
+            else{
+                Date date = converter.convert(dateBundle.getRawValue());
+                dateBundle.setDate(date);
+            }
         }
     }
     
