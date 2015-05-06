@@ -14,7 +14,7 @@ public class Process {
     public Process(String formattersFileName, Calendar referenceTime){
         matchedTimes = new ArrayList<MatchedTime>();
         timeBundles = new ArrayList<TimeBundle>();
-        this.formatter = new Formatter(formattersFileName);
+        this.formatter = new Formatter(formattersFileName, referenceTime);
         this.referenceTime = referenceTime;
         this.converter = new RelativeTimeConverter(this.referenceTime);
     }
