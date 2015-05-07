@@ -14,18 +14,18 @@ a year earlier
 one year ago
 one year earlier
 year earlier
-\d{1,4} years ago
-\d{1,4} years later
-\d{1,2} months ago
-\d{1,2} months later
+\d{1,4} year(s?) ago
+\d{1,4} year(s?) later
+\d{1,2} month(s?) ago
+\d{1,2} month(s?) later
 
 // Remains to be today. 
-(earlier|later)? this (morning|noon|afternoon|evening)
+(earlier |later )?this (morning|noon|afternoon|evening)
 
 // Match a time interval.
-(earlier|later)? this week
-(earlier|later)? this month
-(earlier|later)? this year
+(earlier |later )?this week
+(earlier |later )?this month
+(earlier |later )?this year
 
 // e.g. sat 7 in the morning
 \b(monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun) \d{1,2} in the morning
