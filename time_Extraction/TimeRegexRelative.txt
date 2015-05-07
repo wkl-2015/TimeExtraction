@@ -18,8 +18,10 @@ year earlier
 \d{1,4} years later
 \d{1,2} months ago
 \d{1,2} months later
+
 // Remains to be today. 
 (earlier|later)? this (morning|noon|afternoon|evening)
+
 // Match a time interval.
 (earlier|later)? this week
 (earlier|later)? this month
@@ -41,18 +43,46 @@ year earlier
 this (monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun)
 
 // e.g. last winter
-last (winter)
+\blast (spring|summer|autumn|fall|winter)\b
+
 // e.g. last night
+\blast night\b
+
 // e.g. this second
+\bthis second\b
+
 // e.g. last week tuesday
+\blast week (monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun)\b
+
 // e.g. 5 months before now
+\b\d{1,2} month(s?) before now\b
+
 // e.g. 7 hours ago
+\b\d{1,2} hour(s?) ago\b
+
 // e.g. 7 days from now
+\b\d{1,2} day(s?) from now\b
+
 // e.g. 1 week hence
+\b\d{1,2} week(s?) hence\b
+
 // e.g. in 3 hours
+\bin \d{1,2} hour(s?)\b
+
 // e.g. january 5 at 7pm
+\b(january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec) \d{1,2} at \d{1,2}(:\d{1,2})?\p{Blank}?(am|pm)?\b
+
 // e.g. 3rd wednesday in november
-// e.g. 3rd thursday this september
+\b(1st|2nd|3rd|(\d{1}th)) (monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun) (in|this) (january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec)\b
+
 // e.g. 4th day last week
+\b(1st|2nd|3rd|(\d{1}th)) day (this|last|next) week\b
+
 // e.g. november
+\b(january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec)\b
+
 // e.g. summer
+\b(spring|summer|fall|autumn|winter)\b
+
+// e.g. thursday
+\b(monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun)\b
