@@ -62,4 +62,8 @@ public class Process {
         matchedTimes = new ArrayList<MatchedTime>();
         timeBundles = new ArrayList<TimeBundle>();
     }
+    
+    public List<MatchedTime> getExtractedTimes(){
+        return this.matchedTimes;
+    }
 }
