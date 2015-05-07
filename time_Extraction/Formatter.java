@@ -55,6 +55,9 @@ public class Formatter {
             resultDate.set(Calendar.MONTH, referenceTime.get(Calendar.MONTH));
             resultDate.set(Calendar.DATE, referenceTime.get(Calendar.DATE));
         }
+        if(formatter.toPattern().equals("MMM")){
+            resultDate.set(Calendar.YEAR, referenceTime.get(Calendar.YEAR));
+        }
         
     }
 

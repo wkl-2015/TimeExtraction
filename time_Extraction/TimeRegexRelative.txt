@@ -78,8 +78,5 @@ this (monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|
 // e.g. 4th day last week
 \b(1st|2nd|3rd|(\d{1}th)) day (this|last|next) week\b
 
-// e.g. november
-\b(january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec)\b
-
 // e.g. summer
 \b(spring|summer|fall|autumn|winter)\b
