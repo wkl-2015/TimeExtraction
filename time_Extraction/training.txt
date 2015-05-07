@@ -1,6 +1,6 @@
 thursday == 05-07-2015 00:00 AM
 november == 11-01-2015 00:00 AM
-summer == 08-01-2015 00:00 AM
+summer == 07-01-2015 00:00 AM
 friday 13:00 == 05-08-2015 01:00 PM
 mon 2:35 == 05-04-2015 02:35 AM
 4pm == 05-06-2015 04:00 PM
@@ -12,9 +12,9 @@ today == 05-06-2015 00:00 AM
 tomorrow == 05-07-2015 00:00 AM
 this tuesday == 05-05-2015 00:00 AM
 next month == 06-01-2015 00:00 AM
-last winter == 12-01-2014 00:00 AM
+last winter == 01-01-2014 00:00 AM
 this morning == 05-06-2015 09:00 AM
-last night == 05-05-2015 00:00 PM
+last night == 05-05-2015 09:00 PM
 this second == 05-06-2015 00:00 AM
 yesterday at 4:00 == 05-05-2015 04:00 AM
 last friday at 20:00 == 05-01-2015 08:00 PM
@@ -28,7 +28,7 @@ thursday last week == 04-30-2015 00:00 AM
 7 days from now == 05-13-2015 00:00 AM
 1 week hence == 05-13-2015 00:00 AM
 in 3 hours == 05-06-2015 03:00 AM
-1 year ago == 05-07-2015 00:00 AM
+1 year ago == 05-06-2014 00:00 AM
 3 months ago saturday at 5:00 pm == 02-07-2015 05:00 PM
 7 hours before tomorrow at noon == 05-07-2015 05:00 AM
 3rd wednesday in november == 11-18-2015 00:00 AM
