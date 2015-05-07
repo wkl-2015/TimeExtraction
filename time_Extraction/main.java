@@ -68,7 +68,7 @@ public class main {
             if (timeBundles.get(0).getDateFormat() != null) {
                 System.out.println(timeBundles.get(0).getDateFormat()
                         .toPattern());
-            } else {
+            } else if(timeBundles.get(0).getType() == TYPE.ABSOLUTE){
                 System.out.println("no matched format");
             }
         } else {
