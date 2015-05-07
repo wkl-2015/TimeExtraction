@@ -18,6 +18,7 @@
 \b(monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun)\s\d{1,2}\:\d{2}\b
 
 // e.g. friday
+\b(monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun)\b
 
 // e.g. 4:00
 \d{1,2}\:\d{1,2}(\p{Blank}?(am|pm))?

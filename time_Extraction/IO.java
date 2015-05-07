@@ -70,7 +70,7 @@ public class IO {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             for (String line; (line = br.readLine()) != null;) {
                 if (line == null || line.isEmpty()
-                        || line.substring(0, 2).equals("//")) {
+                        || (line.length() > 1 && line.substring(0, 2).equals("//"))) {
                     continue;
                 }
                 formats.add(line);

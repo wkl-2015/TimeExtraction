@@ -83,6 +83,3 @@ this (monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|
 
 // e.g. summer
 \b(spring|summer|fall|autumn|winter)\b
-
-// e.g. thursday
-\b(monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun)\b

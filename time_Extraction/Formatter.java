@@ -27,7 +27,6 @@ public class Formatter {
             resultDate = parse(formatter, timeBundle.getRawValue());
             if(resultDate != null){
                 timeBundle.setDateFormat(formatter);
-                setDefaultDate(resultDate);
                 relativeHandler(formatter, resultDate);
                 return resultDate;
             }
@@ -39,7 +38,8 @@ public class Formatter {
     // used to handle relative-like format, e.g friday 13:00
     private void relativeHandler(SimpleDateFormat formatter,
             Calendar resultDate) {
-        if(formatter.toPattern().equals("E H:m") || formatter.toPattern().equals("E ha")){
+        if(formatter.toPattern().equals("E H:m") || formatter.toPattern().equals("E ha")
+                || formatter.toPattern().equals("E")){
             Calendar tmp = (Calendar)referenceTime.clone();
             int dayDelta = resultDate.get(Calendar.DAY_OF_WEEK) - tmp.get(Calendar.DAY_OF_WEEK);
             tmp.add(Calendar.DATE, dayDelta);
@@ -47,20 +47,18 @@ public class Formatter {
             resultDate.set(Calendar.MONTH, tmp.get(Calendar.MONTH));
             resultDate.set(Calendar.DATE, tmp.get(Calendar.DATE));
         }
+        if(formatter.toPattern().equals("MMM dd")){
+            resultDate.set(Calendar.YEAR, referenceTime.get(Calendar.YEAR));
+        }
+        if(formatter.toPattern().equals("ha")){
+            resultDate.set(Calendar.YEAR, referenceTime.get(Calendar.YEAR));
+            resultDate.set(Calendar.MONTH, referenceTime.get(Calendar.MONTH));
+            resultDate.set(Calendar.DATE, referenceTime.get(Calendar.DATE));
+        }
         
     }
 
-    // Set year, month, day as referenceTime if they are 1970-1-1
-    private void setDefaultDate(Calendar cal) {
-        if(cal.get(Calendar.YEAR) == 1970){
-            cal.set(Calendar.YEAR, referenceTime.get(Calendar.YEAR));
-            //The first month of the year in the Gregorian and Julian calendars is JANUARY which is 0
-            if(cal.get(Calendar.MONTH) == 0 && cal.get(Calendar.DATE) == 1){
-                cal.set(Calendar.MONTH, referenceTime.get(Calendar.MONTH));
-                cal.set(Calendar.DATE, referenceTime.get(Calendar.DATE));
-            }
-        }
-    }
+
 
     private Calendar parse(SimpleDateFormat sdf, String rawStr){
         Calendar myCal = Calendar.getInstance();
