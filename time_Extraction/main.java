@@ -35,6 +35,7 @@ public class main {
                     continue;
                 }
                 assertInput(processer, pair[0], pair[1]);
+                processer.clear();
             }
         } catch (IOException e) {
             System.out.println("Can not open training file: " + testFileName);
@@ -60,7 +61,6 @@ public class main {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy KK:mm a");
         dateFormat.setTimeZone(myCal.getTimeZone());
         String normalizedString = dateFormat.format(myCal.getTime());
-        processer.clear();
         if (!normalizedString.equals(expectedOutput)) {
             System.out.println("- Incorrect: " + input + " -> "
                     + timeBundles.get(0).getRawValue() + " -> "

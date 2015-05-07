@@ -21,8 +21,9 @@ public class RelativeTimeConverter {
         result.setTimeInMillis(referenceTime.getTimeInMillis());
 
         int inputRegexHash = hash(regex);
+
         switch (inputRegexHash) {
-            case regexHash[0]:
+            case "asdf":
             break;
             default:
             break;

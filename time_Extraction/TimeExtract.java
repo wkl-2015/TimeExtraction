@@ -36,7 +36,7 @@ public class TimeExtract {
                 MatchedTime matchedTime = 
                     new MatchedTime(TYPE.ABSOLUTE, regex, rawString);
                 result.add(matchedTime);
-                input.replace(rawString, 
+                input = input.replace(rawString, 
                     fixedLengthString("*", rawString.length()));
             }
         }
@@ -48,7 +48,7 @@ public class TimeExtract {
                 MatchedTime matchedTime = 
                     new MatchedTime(TYPE.RELATIVE, regex, rawString);
                 result.add(matchedTime);
-                input.replace(rawString, 
+                input = input.replace(rawString, 
                     fixedLengthString("*", rawString.length()));
             }
         }
