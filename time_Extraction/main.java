@@ -22,16 +22,18 @@ public class main{
     public static void main(String[] args){
         setUp();
         try (BufferedReader br = new BufferedReader(new FileReader(testFileName))) {
-            int i = 1;
+            int i = 0;
             for (String line; (line = br.readLine()) != null;) {
+                i++;
+                if (line.length() > 1 && line.substring(0,2).equals("//")) {
+                    continue;
+                }
                 String[] pair = line.split(" == ");
                 if(pair.length != 2){
                     System.out.println("Error test line " + i + " : " + line);
-                    i++;
                     continue;
                 }
                 assertInput(processer, pair[0], pair[1]);
-                i++;
             }
         } catch (IOException e) {
             System.out.println("Can not open training file: " + testFileName);

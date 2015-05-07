@@ -15,7 +15,7 @@ next month == 06-01-2015 00:00 AM
 last winter == 12-01-2014 00:00 AM
 this morning == 05-06-2015 09:00 AM
 last night == 05-05-2015 00:00 PM
-//this second == 05-06-2015 00:00 AM
+this second == 05-06-2015 00:00 AM
 yesterday at 4:00 == 05-05-2015 04:00 AM
 last friday at 20:00 == 05-01-2015 08:00 PM
 last week tuesday == 04-28-2015 00:00 AM
@@ -24,34 +24,34 @@ afternoon yesterday == 05-05-2015 03:00 PM
 thursday last week == 04-30-2015 00:00 AM
 3 years ago == 05-06-2012 00:00 AM
 5 months before now == 12-06-2014 00:00 AM
-7 hours ago == 05-06-2015 02:00 AM
+7 hours ago == 05-05-2015 05:00 PM
 7 days from now == 05-13-2015 00:00 AM
 1 week hence == 05-13-2015 00:00 AM
-in 3 hours == 05-06-2015 12:00 PM
-1 year ago tomorrow == 05-06-2015 00:00 AM
-3 months ago saturday at 5:00 pm == 05-06-2015 00:00 AM
-7 hours before tomorrow at noon == 05-06-2015 00:00 AM
-3rd wednesday in november == 05-06-2015 00:00 AM
-3rd month next year == 05-06-2015 00:00 AM
-3rd thursday this september == 05-06-2015 00:00 AM
-4th day last week == 05-06-2015 00:00 AM
-January 5 == 05-06-2015 00:00 AM
-dec 25 == 05-06-2015 00:00 AM
-may 27th == 05-06-2015 00:00 AM
-October 2006 == 05-06-2015 00:00 AM
-oct 06 == 05-06-2015 00:00 AM
-jan 3 2010 == 05-06-2015 00:00 AM
-february 14, 2004 == 05-06-2015 00:00 AM
-3 jan 2000 == 05-06-2015 00:00 AM
-17 april 85 == 05-06-2015 00:00 AM
-5/27/1979 == 05-06-2015 00:00 AM
-27/5/1979 == 05-06-2015 00:00 AM
+in 3 hours == 05-06-2015 03:00 AM
+1 year ago tomorrow == 05-07-2015 00:00 AM
+3 months ago saturday at 5:00 pm == 02-07-2015 05:00 PM
+7 hours before tomorrow at noon == 05-07-2015 05:00 AM
+3rd wednesday in november == 11-18-2015 00:00 AM
+3rd month next year == 03-01-2016 00:00 AM
+3rd thursday this september == 04-29-2015 00:00 AM
+4th day last week == 04-29-2015 00:00 AM
+January 5 == 01-05-2015 00:00 AM
+dec 25 == 12-25-2015 00:00 AM
+may 27th == 05-27-2015 00:00 AM
+October 2006 == 10-01-2006 00:00 AM
+oct 06 == 10-06-2015 00:00 AM
+jan 3 2010 == 01-03-2015 00:00 AM
+february 14, 2004 == 02-14-2004 00:00 AM
+3 jan 2000 == 01-03-2000 00:00 AM
+17 april 85 == 04-17-1985 00:00 AM
+5/27/1979 == 05-27-1979 00:00 AM
+27/5/1979 == 05-27-1979 00:00 AM
 05/06 == 05-06-2015 00:00 AM
-1979-05-27 == 05-06-2015 00:00 AM
-Friday == 05-06-2015 00:00 AM
-5 == 05-06-2015 00:00 AM
-4:00 == 05-06-2015 00:00 AM
-17:00 == 05-06-2015 00:00 AM
-0800 == 05-06-2015 00:00 AM
-January 5 at 7pm == 05-06-2015 00:00 AM
-1979-05-27 05:00 == 05-06-2015 00:00 AM
+1979-05-27 == 05-27-1979 00:00 AM
+Friday == 05-08-2015 00:00 AM
+5 == 05-06-2015 05:00 AM
+4:00 == 05-06-2015 04:00 AM
+17:00 == 05-06-2015 05:00 PM
+0800 == 05-06-2015 08:00 AM
+January 5 at 7pm == 01-05-2015 07:00 PM
+1979-05-27 05:00 == 05-27-1979 05:00 AM
