@@ -1,6 +1,6 @@
 // NOTICE: Must write the longer time expression before shorter expression.
 // e.g. today at 7pm
-today|yesterday|tomorrow at \d{1,2}(:\d{1,2})?\p{Blank}?(am|pm)?\b
+(today|yesterday|tomorrow) at \d{1,2}(:\d{1,2})?\p{Blank}?(am|pm)?\b
 
 // e.g. today
 today|yesterday|tomorrow

@@ -1,9 +1,12 @@
 package time_Extraction;
 
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RelativeTimeConverter {
     Calendar referenceTime;
@@ -16,93 +19,116 @@ public class RelativeTimeConverter {
     }
     
     public Calendar convert(String relativeTime, String regex){
-        Calendar result = Calendar.getInstance();
-        result.setTimeInMillis(referenceTime.getTimeInMillis());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(referenceTime.getTimeInMillis());
         String[] substrings = null;
-        int delta = 0;
+        int delta = 0;            
         switch (regex) {
+        case "(today|yesterday|tomorrow) at \\d{1,2}(:\\d{1,2})?\\p{Blank}?(am|pm)?\\b":
+            if (relativeTime.contains("am")) {
+                calendar.set(Calendar.AM_PM, Calendar.AM);
+                relativeTime = relativeTime.replace("am", "");
+            } else if (relativeTime.contains("pm")) {
+                calendar.set(Calendar.AM_PM, Calendar.PM);
+                relativeTime = relativeTime.replace("pm", "");
+            }
+            substrings = relativeTime.split(" ");
+            switch (substrings[0]) {
+            case "yesterday":
+                calendar.add(Calendar.DATE, -1);
+                break;
+            case "tomorrow":
+                calendar.add(Calendar.DATE, 1);
+                break;
+            default:
+                break;
+            }
+            String[] hhmm = substrings[2].split(":");
+            calendar.set(Calendar.HOUR, Integer.parseInt(hhmm[0]));
+            calendar.set(Calendar.MINUTE, Integer.parseInt(hhmm[1]));
+            return calendar;
         case "\\b\\d{1,2} in the (morning|evening)":
             substrings = relativeTime.split(" ");
             delta = Integer.parseInt(substrings[0]);
-            result.set(Calendar.HOUR, delta);
-            result.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.HOUR, delta);
+            calendar.set(Calendar.MINUTE, 0);
             if (substrings[3].equals("evening")) {
-                result.set(Calendar.AM_PM, Calendar.PM);
+                calendar.set(Calendar.AM_PM, Calendar.PM);
             }
-            return result;
+            return calendar;
         case "\\blast (spring|summer|autumn|fall|winter)":
-            result.set(Calendar.DATE, 1);
-            result.add(Calendar.YEAR, -1);
+            calendar.set(Calendar.DATE, 1);
+            calendar.add(Calendar.YEAR, -1);
             switch (relativeTime.split(" ")[1]) {
             case "spring":
-                result.set(Calendar.MONTH, 3);
+                calendar.set(Calendar.MONTH, 3);
                 break;
             case "summer":
-                result.set(Calendar.MONTH, 6);
+                calendar.set(Calendar.MONTH, 6);
                 break;
             case "fall":
             case "autumn":
-                result.set(Calendar.MONTH, 9);
+                calendar.set(Calendar.MONTH, 9);
             case "winter":
-                result.set(Calendar.MONTH, 0);
+                calendar.set(Calendar.MONTH, 0);
             default:
                 break;
             }
-            return result;
+            return calendar;
         case "spring|summer|fall|autumn|winter":
-            result.set(Calendar.DATE, 1);
+            calendar.set(Calendar.DATE, 1);
             switch (relativeTime) {
             case "spring":
-                result.set(Calendar.MONTH, 3);
+                calendar.set(Calendar.MONTH, 3);
                 break;
             case "summer":
-                result.set(Calendar.MONTH, 6);
+                calendar.set(Calendar.MONTH, 6);
                 break;
             case "fall":
             case "autumn":
-                result.set(Calendar.MONTH, 9);
+                calendar.set(Calendar.MONTH, 9);
             case "winter":
-                result.set(Calendar.MONTH, 0);
+                calendar.set(Calendar.MONTH, 0);
             default:
                 break;
             }
-            return result;
+            return calendar;
         case "\\bthis second\\b":
-            return result;
+            return calendar;
         case "\\blast night\\b":
-            result.add(Calendar.DATE, -1);
-            result.set(Calendar.HOUR, 9);
-            result.set(Calendar.AM_PM, Calendar.PM);
-            return result;
+            calendar.add(Calendar.DATE, -1);
+            calendar.set(Calendar.HOUR, 9);
+            calendar.set(Calendar.AM_PM, Calendar.PM);
+            return calendar;
         case "\\b\\d{1,2} month(s?) before now\\b":
             delta = Integer.parseInt(relativeTime.substring(0, 2).trim());
-            result.set(Calendar.DATE, 1);
-            result.add(Calendar.MONTH, -1 * delta);
-            return result;
+            calendar.set(Calendar.DATE, 1);
+            calendar.add(Calendar.MONTH, -1 * delta);
+            return calendar;
         case "\\b\\d{1,2} (hour|day|week|month|year)(s?) ((before now)|ago|earlier)\\b":
             substrings = relativeTime.split(" ");
             delta = Integer.parseInt(substrings[0]) * -1;
             switch (substrings[1]) {
             case "hour":
             case "hours":
-                result.add(Calendar.HOUR, delta);
-                return result;
+                calendar.add(Calendar.HOUR, delta);
+                return calendar;
             case "day":
             case "days":
-                result.add(Calendar.DATE, delta);
-                return result;
+                calendar.add(Calendar.DATE, delta);
+                return calendar;
             case "week":
             case "weeks":
-                result.add(Calendar.DATE, delta * 7);
-                return result;
+                calendar.add(Calendar.DATE, delta * 7);
+                return calendar;
             case "month":
             case "months":
-                result.add(Calendar.MONTH, delta);
-                return result;
+                calendar.add(Calendar.MONTH, delta);
+                return calendar;
             case "year":
             case "years":
-                result.add(Calendar.YEAR, delta);
-                return result;
+                calendar.add(Calendar.YEAR, delta);
+                return calendar;
             default:
                 break;
             }
@@ -112,24 +138,24 @@ public class RelativeTimeConverter {
             switch (substrings[1]) {
             case "hour":
             case "hours":
-                result.add(Calendar.HOUR, delta);
-                return result;
+                calendar.add(Calendar.HOUR, delta);
+                return calendar;
             case "day":
             case "days":
-                result.add(Calendar.DATE, delta);
-                return result;
+                calendar.add(Calendar.DATE, delta);
+                return calendar;
             case "week":
             case "weeks":
-                result.add(Calendar.DATE, delta * 7);
-                return result;
+                calendar.add(Calendar.DATE, delta * 7);
+                return calendar;
             case "month":
             case "months":
-                result.add(Calendar.MONTH, delta);
-                return result;
+                calendar.add(Calendar.MONTH, delta);
+                return calendar;
             case "year":
             case "years":
-                result.add(Calendar.YEAR, delta);
-                return result;
+                calendar.add(Calendar.YEAR, delta);
+                return calendar;
             default:
                 break;
             }
@@ -139,86 +165,200 @@ public class RelativeTimeConverter {
             switch (substrings[2]) {
             case "hour":
             case "hours":
-                result.add(Calendar.HOUR, delta);
-                return result;
+                calendar.add(Calendar.HOUR, delta);
+                return calendar;
             case "day":
             case "days":
-                result.add(Calendar.DATE, delta);
-                return result;
+                calendar.add(Calendar.DATE, delta);
+                return calendar;
             case "week":
             case "weeks":
-                result.add(Calendar.DATE, delta * 7);
-                return result;
+                calendar.add(Calendar.DATE, delta * 7);
+                return calendar;
             case "month":
             case "months":
-                result.add(Calendar.MONTH, delta);
-                return result;
+                calendar.add(Calendar.MONTH, delta);
+                return calendar;
             case "year":
             case "years":
-                result.add(Calendar.YEAR, delta);
-                return result;
+                calendar.add(Calendar.YEAR, delta);
+                return calendar;
             default:
                 break;
+            }
+        case "this (monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun)":
+            substrings = relativeTime.split(" ");
+            switch (substrings[1]) {
+            case "monday":
+            case "mon":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+                return calendar;
+            case "tuesday":
+            case "tue":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+                return calendar;
+            case "wednesday":
+            case "wed":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
+                return calendar;
+            case "thursday":
+            case "thu":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
+                return calendar;
+            case "friday":
+            case "fri":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+                return calendar;
+            case "saturday":
+            case "sat":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+                return calendar;
+            case "sunday":
+            case "sun":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+                return calendar;
+            default:
+                break;
+            }
+        case "\\blast week (monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun)\\b":
+            substrings = relativeTime.split(" ");
+            calendar.add(Calendar.DATE, -7);
+            switch (substrings[2]) {
+            case "monday":
+            case "mon":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+                return calendar;
+            case "tuesday":
+            case "tue":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+                return calendar;
+            case "wednesday":
+            case "wed":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
+                return calendar;
+            case "thursday":
+            case "thu":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
+                return calendar;
+            case "friday":
+            case "fri":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+                return calendar;
+            case "saturday":
+            case "sat":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+                return calendar;
+            case "sunday":
+            case "sun":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+                return calendar;
+            default:
+                break;
+            }
+        case "\\b(monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun) last week\\b":
+            substrings = relativeTime.split(" ");
+            calendar.add(Calendar.DATE, -7);
+            switch (substrings[0]) {
+            case "monday":
+            case "mon":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+                return calendar;
+            case "tuesday":
+            case "tue":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+                return calendar;
+            case "wednesday":
+            case "wed":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
+                return calendar;
+            case "thursday":
+            case "thu":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
+                return calendar;
+            case "friday":
+            case "fri":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+                return calendar;
+            case "saturday":
+            case "sat":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+                return calendar;
+            case "sunday":
+            case "sun":
+                calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+                return calendar;
+            default:
+                break;
+            }
+        case "\\b(january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec) \\d{1,2} at \\d{1,2}(:\\d{1,2})?\\p{Blank}?(am|pm)?\\b":
+            relativeTime = relativeTime.replace(" at", "");
+            SimpleDateFormat format = new SimpleDateFormat("MMM dd ha");
+            try{
+                calendar.setTime(format.parse(relativeTime));
+                calendar.set(Calendar.YEAR, referenceTime.get(Calendar.YEAR));
+                return calendar;
+            } catch(ParseException e){
+                return calendar;
             }
         default:
             break;
         }
 
         if(relativeTime.contains("today")){
-            return result;
+            return calendar;
         }
         if(relativeTime.contains("yesterday")){
-            result.add(Calendar.DATE, -1);
-            return result;
+            calendar.add(Calendar.DATE, -1);
+            return calendar;
         }
         if(relativeTime.contains("tomorrow")){
-            result.add(Calendar.DATE, 1);
-            return result;
+            calendar.add(Calendar.DATE, 1);
+            return calendar;
         }
         if(relativeTime.contains("next month") || relativeTime.contains("a month later")){
-            result.add(Calendar.MONTH, 1);
-            result.set(Calendar.DATE, 1);
-            return result;
+            calendar.add(Calendar.MONTH, 1);
+            calendar.set(Calendar.DATE, 1);
+            return calendar;
         }
         if(relativeTime.contains("last month") || relativeTime.contains("a month ago")){
-            result.add(Calendar.MONTH, -1);
-            result.set(Calendar.DATE, 1);
-            return result;
+            calendar.add(Calendar.MONTH, -1);
+            calendar.set(Calendar.DATE, 1);
+            return calendar;
         }
         if(relativeTime.contains("next year")){
-            result.add(Calendar.YEAR, 1);
-            return result;
+            calendar.add(Calendar.YEAR, 1);
+            return calendar;
         }
         if(relativeTime.contains("last year") || relativeTime.contains("past year")
                 || relativeTime.contains("year ago") || relativeTime.contains("year earlier")){
-            result.add(Calendar.YEAR, -1);
-            return result;
+            calendar.add(Calendar.YEAR, -1);
+            return calendar;
         }
         if(relativeTime.contains("years ago") || relativeTime.contains("years earlier")){
             int year = Integer.parseInt(relativeTime.replaceAll("[^0-9]", ""));
-            result.add(Calendar.YEAR, year*-1);
-            return result;
+            calendar.add(Calendar.YEAR, year*-1);
+            return calendar;
         }
         if(relativeTime.contains("years later")){
             int year = Integer.parseInt(relativeTime.replaceAll("[^0-9]", ""));
-            result.add(Calendar.YEAR, year);
-            return result;
+            calendar.add(Calendar.YEAR, year);
+            return calendar;
         }
         if(relativeTime.contains("months ago") || relativeTime.contains("months earlier")){
             int year = Integer.parseInt(relativeTime.replaceAll("[^0-9]", ""));
-            result.add(Calendar.MONTH, year*-1);
-            return result;
+            calendar.add(Calendar.MONTH, year*-1);
+            return calendar;
         }
         if(relativeTime.contains("months later")){
             int year = Integer.parseInt(relativeTime.replaceAll("[^0-9]", ""));
-            result.add(Calendar.MONTH, year);
-            return result;
+            calendar.add(Calendar.MONTH, year);
+            return calendar;
         }
         if(relativeTime.contains("this morning")){
-            result.set(Calendar.HOUR, 9);
-            result.set(Calendar.MINUTE, 0);
-            result.set(Calendar.AM_PM, Calendar.AM);
-            return result;
+            calendar.set(Calendar.HOUR, 9);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.AM_PM, Calendar.AM);
+            return calendar;
         }
 
       
