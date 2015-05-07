@@ -52,7 +52,7 @@ public class main{
         List<TimeBundle> timeBundles = processer.getTimeBundles();
         Calendar myCal = timeBundles.get(0).getCalendar();
         if (myCal == null) {
-            System.out.println("- Can't get Calendar: " + input);
+            //System.out.println("- Can't get Calendar: " + input);
             return;
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm a");
