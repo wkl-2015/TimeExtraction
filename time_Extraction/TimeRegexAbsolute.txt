@@ -4,13 +4,21 @@
 \d{4}(\-|\.|\/|\s)\d{1,2}(\-|\.|\/|\s)\d{1,2} ((\d{1,2}\:\d{2})( am| pm)?)?
 
 // e.g. jan 9, 2007 | jan 9 2007 | jan 9 | jan 2007
-(january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec) ((\d{1,2}((\,)? \d{4})?)|\d{4})
+(january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec) (\d{4}|(\d{1,2}((\,)? \d{4})?))
+
+// e.g. 05/06
+
+// e.g friday 1pm 
 
 // e.g. friday 13:00
 \b(monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun)\s\d{1,2}\:\d{2}\b
 
+// e.g. friday
+
 // e.g. 4:00
 \d{1,2}\:\d{1,2}(\p{Blank}?(am|pm))?
+
+// e.g 4pm
 
 // e.g. 1900
 \b(1|2)\d{3}\b
