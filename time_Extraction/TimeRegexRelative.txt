@@ -41,6 +41,7 @@ year earlier
 this (monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun)
 
 // e.g. last winter
+last (winter)
 // e.g. last night
 // e.g. this second
 // e.g. last week tuesday

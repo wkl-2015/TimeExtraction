@@ -8,16 +8,12 @@ import java.util.ArrayList;
 public class RelativeTimeConverter {
     Calendar referenceTime;
     List<String> relativeRegexs;
-    int[] regexHash;
     
     public RelativeTimeConverter(Calendar referenceTime, 
             List<String> relativeRegexs){
         this.referenceTime = referenceTime;
         this.relativeRegexs = relativeRegexs;
         this.regexHash = new int[relativeRegexs.size()];
-        for (int i = 0; i < relativeRegexs.size(); i++) {
-            regexHash[i] = hash(relativeRegexs.get(i));
-        }
     }
     
     public Calendar convert(String relativeTime, String regex){
@@ -27,30 +23,6 @@ public class RelativeTimeConverter {
         int inputRegexHash = hash(regex);
         switch (inputRegexHash) {
             case regexHash[0]:
-            break;
-            case regexHash[1]:
-            break;
-            case regexHash[2]:
-            break;
-            case regexHash[3]:
-            break;
-            case regexHash[4]:
-            break;
-            case regexHash[5]:
-            break;
-            case regexHash[6]:
-            break;
-            case regexHash[7]:
-            break;
-            case regexHash[8]:
-            break;
-            case regexHash[9]:
-            break;
-            case regexHash[10]:
-            break;
-            case regexHash[11]:
-            break;
-            case regexHash[12]:
             break;
             default:
             break;
