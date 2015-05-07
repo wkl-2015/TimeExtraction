@@ -13,7 +13,6 @@ public class RelativeTimeConverter {
             List<String> relativeRegexs){
         this.referenceTime = referenceTime;
         this.relativeRegexs = relativeRegexs;
-        this.regexHash = new int[relativeRegexs.size()];
     }
     
     public Calendar convert(String relativeTime, String regex){
