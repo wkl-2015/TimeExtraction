@@ -1,7 +1,5 @@
 package time_Extraction;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -51,6 +49,10 @@ public class main{
         processer.formatDate();
         List<TimeBundle> timeBundles = processer.getTimeBundles();
         Calendar myCal = timeBundles.get(0).getCalendar();
+        if (myCal == null) {
+            System.out.println("convertion error: " + input);
+            return;
+        }
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm a");
         dateFormat.setTimeZone(myCal.getTimeZone());
         String normalizedString = dateFormat.format(myCal.getTime());
