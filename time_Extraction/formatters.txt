@@ -109,7 +109,7 @@ M/d/yy H:m
 M/d/yy 
 M.d.yyyy
 h:mma MMM d, E 
-h:mma 
+h:mm a
 E ddMMM h:mm a 
 E ddMMM h:mma 
 E ddMMMyy h:mm a 
@@ -120,6 +120,7 @@ E d MMM, yyyy h:m a
 E d MMM yy h:m a 
 E d MMM yy H:m 
 Ed MMM yy HH:mm
+M/dd/yyyy
 dd/M/yyyy
 HH:mm'N' 
 MM dd h:m a 
@@ -133,6 +134,6 @@ E, d MMM, yyyy H:m
 MMM d yy h:m a 
 E MMM d h:m a 
 E MMM d 
-HH:mm 
 E, MMM d 
 E d-MMM yyyy HH:mm
+yyyy

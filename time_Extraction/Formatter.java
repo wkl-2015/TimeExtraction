@@ -14,7 +14,9 @@ public class Formatter {
     public Formatter(String fileName, Calendar referenceTime){
         List<String> formatterStr = IO.readDateFormat(fileName);
         for(String format: formatterStr){
-            formatters.add(new SimpleDateFormat(format));
+            SimpleDateFormat formatter = new SimpleDateFormat(format);
+            formatter.setLenient(false);
+            formatters.add(formatter);
         }
         this.referenceTime = referenceTime;
     }
