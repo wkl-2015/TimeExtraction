@@ -1,57 +1,57 @@
-thursday
-november
-summer
-friday 13:00
-mon 2:35
-4pm
-6 in the morning
-friday 1pm
-sat 7 in the evening
-yesterday
-today
-tomorrow
-this tuesday
-next month
-last winter
-this morning
-last night
-this second
-yesterday at 4:00
-last friday at 20:00
-last week tuesday
-tomorrow at 6:45pm
-afternoon yesterday
-thursday last week
-3 years ago
-5 months before now
-7 hours ago
-7 days from now
-1 week hence
-in 3 hours
-1 year ago tomorrow
-3 months ago saturday at 5:00 pm
-7 hours before tomorrow at noon
-3rd wednesday in november
-3rd month next year
-3rd thursday this september
-4th day last week
-January 5
-dec 25
-may 27th
-October 2006
-oct 06
-jan 3 2010
-february 14, 2004
-3 jan 2000
-17 april 85
-5/27/1979
-27/5/1979
-05/06
-1979-05-27
-Friday
-5
-4:00
-17:00
-0800
-January 5 at 7pm
-1979-05-27 05:00
+thursday == 05-07-2015 00:00 AM
+november == 10-01-2015 00:00 AM
+summer == 08-01-2015 00:00 AM
+friday 13:00 == 05-08-2015 01:00 PM
+mon 2:35 == 05-04-2015 02:35 AM
+4pm == 05-06-2015 04:00 PM
+6 in the morning == 05-06-2015 06:00 AM
+friday 1pm == 05-08-2015 01:00 PM
+sat 7 in the evening == 05-00-2015 07:00 PM
+yesterday == 05-05-2015 00:00 AM
+today == 05-06-2015 00:00 AM
+tomorrow == 05-07-2015 00:00 AM
+this tuesday == 05-05-2015 00:00 AM
+next month == 06-01-2015 00:00 AM
+last winter == 12-01-2014 00:00 AM
+this morning == 05-06-2015 09:00 AM
+last night == 05-05-2015 00:00 PM
+//this second == 05-06-2015 00:00 AM
+yesterday at 4:00 == 05-05-2015 04:00 AM
+last friday at 20:00 == 05-01-2015 08:00 PM
+last week tuesday == 04-28-2015 00:00 AM
+tomorrow at 6:45pm == 05-07-2015 06:45 PM
+afternoon yesterday == 05-05-2015 03:00 PM
+thursday last week == 04-30-2015 00:00 AM
+3 years ago == 05-06-2012 00:00 AM
+5 months before now == 12-06-2014 00:00 AM
+7 hours ago == 05-06-2015 02:00 AM
+7 days from now == 05-13-2015 00:00 AM
+1 week hence == 05-13-2015 00:00 AM
+in 3 hours == 05-06-2015 12:00 PM
+1 year ago tomorrow == 05-06-2015 00:00 AM
+3 months ago saturday at 5:00 pm == 05-06-2015 00:00 AM
+7 hours before tomorrow at noon == 05-06-2015 00:00 AM
+3rd wednesday in november == 05-06-2015 00:00 AM
+3rd month next year == 05-06-2015 00:00 AM
+3rd thursday this september == 05-06-2015 00:00 AM
+4th day last week == 05-06-2015 00:00 AM
+January 5 == 05-06-2015 00:00 AM
+dec 25 == 05-06-2015 00:00 AM
+may 27th == 05-06-2015 00:00 AM
+October 2006 == 05-06-2015 00:00 AM
+oct 06 == 05-06-2015 00:00 AM
+jan 3 2010 == 05-06-2015 00:00 AM
+february 14, 2004 == 05-06-2015 00:00 AM
+3 jan 2000 == 05-06-2015 00:00 AM
+17 april 85 == 05-06-2015 00:00 AM
+5/27/1979 == 05-06-2015 00:00 AM
+27/5/1979 == 05-06-2015 00:00 AM
+05/06 == 05-06-2015 00:00 AM
+1979-05-27 == 05-06-2015 00:00 AM
+Friday == 05-06-2015 00:00 AM
+5 == 05-06-2015 00:00 AM
+4:00 == 05-06-2015 00:00 AM
+17:00 == 05-06-2015 00:00 AM
+0800 == 05-06-2015 00:00 AM
+January 5 at 7pm == 05-06-2015 00:00 AM
+1979-05-27 05:00 == 05-06-2015 00:00 AM

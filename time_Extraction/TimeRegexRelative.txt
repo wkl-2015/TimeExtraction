@@ -1,3 +1,4 @@
+// NOTICE: Must write the longer time expression before shorter expression.
 today
 yesterday
 tomorrow
@@ -23,9 +24,15 @@ year earlier
 (earlier|later)? this week
 (earlier|later)? this month
 (earlier|later)? this year
+
 // e.g. friday
 //\b(monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun)\b
-// e.g. jan 9
-//(january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec)(\p{Blank})?\d{1,2}
+
+// e.g. january 5 at 7pm
+(january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec)(\p{Blank})?\d{1,2}(at )\d{1,2}(\:\d{1,2})?(\p{Blank}?(am|pm))?
+
 // e.g. jan 2007
-//(january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec)(\p{Blank})?\d{4}
+(january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec)(\p{Blank})?\d{4}
+
+// e.g. jan 9
+(january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec)(\p{Blank})?\d{1,2}

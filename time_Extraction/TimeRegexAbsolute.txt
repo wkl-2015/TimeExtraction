@@ -1,4 +1,10 @@
-// We may need to break these down to make it easier to implement Formatter.
+// NOTICE: Must write the longer time expression before shorter expression.
+
+// e.g. 2007-01-09 09:41 am
+((\d{2,4}\-\d{1,2}\-\d{1,2})|(\d{1,2}\-\d{1,2}\-\d{2,4}|\d{1,2}\/\d{1,2}\/\d{2,4})|(\d{2,4}\/\d{1,2}\/\d{1,2}))(\p{Blank}|\,|(\,\p{Blank}))(\d{1,2}\:\d{1,2}(\p{Blank}?(am|pm))?)
+
+// e.g. jan 9, 2007 at 09:41
+(january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec)(\p{Blank})?\d{1,2}(\p{Blank}|\,|(\,\p{Blank}))\d{4}(\p{Blank}|\,|(\,\p{Blank}))(at )(\d{1,2}(\:\d{1,2})?(\p{Blank}?(am|pm))?)
 
 // e.g. jan 9, 2007
 (january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep|october|oct|november|nov|december|dec)(\p{Blank})?\d{1,2}(\p{Blank}|\,|(\,\p{Blank}))\d{4}
@@ -10,8 +16,7 @@
 \b\d{2,4}\/\d{1,2}\/\d{1,2}\b
 
 // e.g. 4:00
-\d{1,2}\:\d{1,2} (am|pm)
-
+\d{1,2}\:\d{1,2}(\p{Blank}?(am|pm))?
 
 // e.g. 1900
 \b(1|2)\d{3}\b
