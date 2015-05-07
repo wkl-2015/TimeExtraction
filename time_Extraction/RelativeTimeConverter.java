@@ -16,13 +16,46 @@ public class RelativeTimeConverter {
         this.relativeRegexs = relativeRegexs;
         this.regexHash = new int[relativeRegexs.size()];
         for (int i = 0; i < relativeRegexs.size(); i++) {
-            regexHash[i] = computeHash(relativeRegexs.get(i));
+            regexHash[i] = hash(relativeRegexs.get(i));
         }
     }
     
     public Calendar convert(String relativeTime, String regex){
         Calendar result = Calendar.getInstance();
         result.setTimeInMillis(referenceTime.getTimeInMillis());
+
+        int inputRegexHash = hash(regex);
+        switch (inputRegexHash) {
+            case regexHash[0]:
+            break;
+            case regexHash[1]:
+            break;
+            case regexHash[2]:
+            break;
+            case regexHash[3]:
+            break;
+            case regexHash[4]:
+            break;
+            case regexHash[5]:
+            break;
+            case regexHash[6]:
+            break;
+            case regexHash[7]:
+            break;
+            case regexHash[8]:
+            break;
+            case regexHash[9]:
+            break;
+            case regexHash[10]:
+            break;
+            case regexHash[11]:
+            break;
+            case regexHash[12]:
+            break;
+            default:
+            break;
+        }
+
         if(relativeTime.contains("today")){
             return result;
         }
@@ -84,7 +117,7 @@ public class RelativeTimeConverter {
         return null;
     }
 
-    private int computeHash(String regex) {
+    private int hash(String regex) {
         int hash = 7;
         for (int i = 0; i < regex.length(); i++) {
             hash = hash * 31 + regex.charAt(i);

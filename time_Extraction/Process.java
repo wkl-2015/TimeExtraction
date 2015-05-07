@@ -43,13 +43,11 @@ public class Process {
             if(timeBundle.getType() == TYPE.ABSOLUTE){
                 Calendar calendar = formatter.format(timeBundle);
                 timeBundle.setCalendar(calendar);
-            }
-            else if(timeBundle.getType() == TYPE.RELATIVE){
+            } else if(timeBundle.getType() == TYPE.RELATIVE){
                 Calendar date = converter.convert(timeBundle.getRawValue(), 
                     timeBundle.getRegex());
                 timeBundle.setCalendar(date);
             }
-            else{}
         }
     }
     
