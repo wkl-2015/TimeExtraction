@@ -20,9 +20,7 @@ public class RelativeTimeConverter {
         Calendar result = Calendar.getInstance();
         result.setTimeInMillis(referenceTime.getTimeInMillis());
 
-        int inputRegexHash = hash(regex);
-
-        switch (inputRegexHash) {
+        switch (regex) {
             case "asdf":
             break;
             default:
