@@ -44,7 +44,7 @@ public class main{
     private static void assertInput(Process processer, String input, String expectedOutput){
         processer.extractTimeFromInput(input);
         if(processer.getExtractedTimes().size() == 0){
-            System.out.println("Not matched: " + input);
+            System.out.println("- Unmatched: " + input);
             return;
         }
         processer.createDateBundles();
@@ -52,7 +52,7 @@ public class main{
         List<TimeBundle> timeBundles = processer.getTimeBundles();
         Calendar myCal = timeBundles.get(0).getCalendar();
         if (myCal == null) {
-            System.out.println("convertion error: " + input);
+            System.out.println("- Can't get Calendar: " + input);
             return;
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm a");
@@ -60,7 +60,9 @@ public class main{
         String normalizedString = dateFormat.format(myCal.getTime());
         processer.clear();
         if(!normalizedString.equals(expectedOutput)){
-            System.out.println("Convertion Error: " + input + " -> " + normalizedString + " | " + expectedOutput);
+            System.out.println("- Incorrect: " + input + " -> " + normalizedString + " != " + expectedOutput);
+        } else {
+            System.out.println("+ Correct: " + input + " -> " + normalizedString + " == " + expectedOutput);
         }
     }
     

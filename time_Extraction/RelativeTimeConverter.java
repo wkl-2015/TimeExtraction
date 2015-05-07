@@ -69,7 +69,7 @@ public class RelativeTimeConverter {
         }
 
       
-        System.out.println("Can't convert: " + relativeTime);
+        System.out.println("- Relative time not converted: " + relativeTime);
        
         return null;
     }
