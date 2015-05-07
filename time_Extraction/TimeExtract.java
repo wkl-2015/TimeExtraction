@@ -28,18 +28,6 @@ public class TimeExtract {
     public List<MatchedTime> extractInput(String input) {
         input = input.toLowerCase();
         List<MatchedTime> result = new ArrayList<MatchedTime>();
-        for (String regex : absoluteRegexs) {
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(input);
-            while (matcher.find()) {
-                String rawString = matcher.group();
-                MatchedTime matchedTime = 
-                    new MatchedTime(TYPE.ABSOLUTE, regex, rawString);
-                result.add(matchedTime);
-                input = input.replace(rawString, 
-                    fixedLengthString("*", rawString.length()));
-            }
-        }
         for (String regex : relativeRegexs) {
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(input);
@@ -47,6 +35,18 @@ public class TimeExtract {
                 String rawString = matcher.group();
                 MatchedTime matchedTime = 
                     new MatchedTime(TYPE.RELATIVE, regex, rawString);
+                result.add(matchedTime);
+                input = input.replace(rawString, 
+                    fixedLengthString("*", rawString.length()));
+            }
+        }
+        for (String regex : absoluteRegexs) {
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(input);
+            while (matcher.find()) {
+                String rawString = matcher.group();
+                MatchedTime matchedTime = 
+                    new MatchedTime(TYPE.ABSOLUTE, regex, rawString);
                 result.add(matchedTime);
                 input = input.replace(rawString, 
                     fixedLengthString("*", rawString.length()));
