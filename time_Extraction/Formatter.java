@@ -39,7 +39,7 @@ public class Formatter {
     // used to handle relative-like format, e.g friday 13:00
     private void relativeHandler(SimpleDateFormat formatter,
             Calendar resultDate) {
-        if(formatter.toPattern().equals("E H:m")){
+        if(formatter.toPattern().equals("E H:m") || formatter.toPattern().equals("E ha")){
             Calendar tmp = (Calendar)referenceTime.clone();
             int dayDelta = resultDate.get(Calendar.DAY_OF_WEEK) - tmp.get(Calendar.DAY_OF_WEEK);
             tmp.add(Calendar.DATE, dayDelta);

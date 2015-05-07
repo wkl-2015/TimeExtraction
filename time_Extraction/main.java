@@ -72,8 +72,8 @@ public class main {
                 System.out.println("no matched format");
             }
         } else {
-            System.out.println("+ Correct: " + input + " -> "
-                    + normalizedString + " == " + expectedOutput);
+           // System.out.println("+ Correct: " + input + " -> "
+            //        + normalizedString + " == " + expectedOutput);
         }
     }
 
