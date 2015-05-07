@@ -47,10 +47,10 @@ public class Formatter {
             resultDate.set(Calendar.MONTH, tmp.get(Calendar.MONTH));
             resultDate.set(Calendar.DATE, tmp.get(Calendar.DATE));
         }
-        if(formatter.toPattern().equals("MMM dd")){
+        if(formatter.toPattern().equals("MMM dd") || formatter.toPattern().equals("M/dd")){
             resultDate.set(Calendar.YEAR, referenceTime.get(Calendar.YEAR));
         }
-        if(formatter.toPattern().equals("ha")){
+        if(formatter.toPattern().equals("ha") || formatter.toPattern().equals("k:mm")){
             resultDate.set(Calendar.YEAR, referenceTime.get(Calendar.YEAR));
             resultDate.set(Calendar.MONTH, referenceTime.get(Calendar.MONTH));
             resultDate.set(Calendar.DATE, referenceTime.get(Calendar.DATE));
