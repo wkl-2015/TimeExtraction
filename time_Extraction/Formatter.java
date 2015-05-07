@@ -28,6 +28,7 @@ public class Formatter {
             if(resultDate != null){
                 timeBundle.setDateFormat(formatter);
                 setDefaultDate(resultDate);
+                relativeHandler(formatter, resultDate);
                 return resultDate;
             }
         }
@@ -35,6 +36,20 @@ public class Formatter {
         return null;
     }
     
+    // used to handle relative-like format, e.g friday 13:00
+    private void relativeHandler(SimpleDateFormat formatter,
+            Calendar resultDate) {
+        if(formatter.toPattern().equals("E H:m")){
+            Calendar tmp = (Calendar)referenceTime.clone();
+            int dayDelta = resultDate.get(Calendar.DAY_OF_WEEK) - tmp.get(Calendar.DAY_OF_WEEK);
+            tmp.add(Calendar.DATE, dayDelta);
+            resultDate.set(Calendar.YEAR, tmp.get(Calendar.YEAR));
+            resultDate.set(Calendar.MONTH, tmp.get(Calendar.MONTH));
+            resultDate.set(Calendar.DATE, tmp.get(Calendar.DATE));
+        }
+        
+    }
+
     // Set year, month, day as referenceTime if they are 1970-1-1
     private void setDefaultDate(Calendar cal) {
         if(cal.get(Calendar.YEAR) == 1970){

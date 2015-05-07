@@ -26,6 +26,7 @@ public class TimeExtract {
     }
 
     public List<MatchedTime> extractInput(String input) {
+        input = input.toLowerCase();
         List<MatchedTime> result = new ArrayList<MatchedTime>();
         for (String regex : absoluteRegexs) {
             Pattern pattern = Pattern.compile(regex);

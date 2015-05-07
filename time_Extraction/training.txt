@@ -28,7 +28,7 @@ thursday last week == 04-30-2015 00:00 AM
 7 days from now == 05-13-2015 00:00 AM
 1 week hence == 05-13-2015 00:00 AM
 in 3 hours == 05-06-2015 03:00 AM
-1 year ago tomorrow == 05-07-2015 00:00 AM
+1 year ago == 05-07-2015 00:00 AM
 3 months ago saturday at 5:00 pm == 02-07-2015 05:00 PM
 7 hours before tomorrow at noon == 05-07-2015 05:00 AM
 3rd wednesday in november == 11-18-2015 00:00 AM
@@ -40,7 +40,7 @@ dec 25 == 12-25-2015 00:00 AM
 may 27th == 05-27-2015 00:00 AM
 October 2006 == 10-01-2006 00:00 AM
 oct 06 == 10-06-2015 00:00 AM
-jan 3 2010 == 01-03-2015 00:00 AM
+jan 3 2010 == 01-03-2010 00:00 AM
 february 14, 2004 == 02-14-2004 00:00 AM
 3 jan 2000 == 01-03-2000 00:00 AM
 17 april 85 == 04-17-1985 00:00 AM

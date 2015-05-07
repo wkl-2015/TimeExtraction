@@ -22,9 +22,11 @@ d MMM,yyyy h a
 d MMM,yyyy 
 d MMM yyyy h:mm a 
 d MMM yyyy h a 
+yyyy-M-d hh:m
 yyyy-M-d
 h:m a (ddMMM) 
 ddMMM h:m a 
+E H:m
 h:m a 
 h:m\u00a0a 
 E, ddMMM H:mm'N' 
