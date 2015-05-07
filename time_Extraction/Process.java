@@ -41,10 +41,11 @@ public class Process {
                 Calendar calendar = formatter.format(timeBundle);
                 timeBundle.setCalendar(calendar);
             }
-            else{
+            else if(timeBundle.getType() == TYPE.RELATIVE){
                 Calendar date = converter.convert(timeBundle.getRawValue());
                 timeBundle.setCalendar(date);
             }
+            else{}
         }
     }
     
