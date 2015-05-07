@@ -9,10 +9,12 @@ public class TimeBundle {
     private String rawValue;
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
+    private String regex;
     
-    public TimeBundle(String rawValue, TYPE timeType){
+    public TimeBundle(String rawValue, TYPE timeType, String regex){
         this.rawValue = rawValue;
         this.timeType = timeType;
+        this.regex = regex;
     }
     
     public void setCalendar(Calendar calendar){
@@ -37,5 +39,9 @@ public class TimeBundle {
     
     public TYPE getType(){
         return this.timeType;
+    }
+
+    public String getRegex() {
+        return this.regex;
     }
 }

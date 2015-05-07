@@ -2,15 +2,25 @@ package time_Extraction;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
 
 public class RelativeTimeConverter {
     Calendar referenceTime;
+    List<String> relativeRegexs;
+    int[] regexHash;
     
-    public RelativeTimeConverter(Calendar referenceTime){
+    public RelativeTimeConverter(Calendar referenceTime, 
+            List<String> relativeRegexs){
         this.referenceTime = referenceTime;
+        this.relativeRegexs = relativeRegexs;
+        this.regexHash = new int[relativeRegexs.size()];
+        for (int i = 0; i < relativeRegexs.size(); i++) {
+            regexHash[i] = computeHash(relativeRegexs.get(i));
+        }
     }
     
-    public Calendar convert(String relativeTime){
+    public Calendar convert(String relativeTime, String regex){
         Calendar result = Calendar.getInstance();
         result.setTimeInMillis(referenceTime.getTimeInMillis());
         if(relativeTime.contains("today")){
@@ -72,5 +82,13 @@ public class RelativeTimeConverter {
         System.out.println("- Relative time not converted: " + relativeTime);
        
         return null;
+    }
+
+    private int computeHash(String regex) {
+        int hash = 7;
+        for (int i = 0; i < regex.length(); i++) {
+            hash = hash * 31 + regex.charAt(i);
+        }
+        return hash;
     }
 }

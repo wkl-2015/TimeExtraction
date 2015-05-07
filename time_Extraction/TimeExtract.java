@@ -58,4 +58,8 @@ public class TimeExtract {
     private String fixedLengthString(String string, int length) {
         return String.format("%1$"+length+ "s", string);
     }
+
+    public List<String> getRelativeRegexList() {
+        return relativeRegexs;
+    }
 }
