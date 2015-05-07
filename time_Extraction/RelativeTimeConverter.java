@@ -25,36 +25,36 @@ public class RelativeTimeConverter {
         result.setTimeInMillis(referenceTime.getTimeInMillis());
 
         int inputRegexHash = hash(regex);
-        switch (inputRegexHash) {
-            case regexHash[0]:
-            break;
-            case regexHash[1]:
-            break;
-            case regexHash[2]:
-            break;
-            case regexHash[3]:
-            break;
-            case regexHash[4]:
-            break;
-            case regexHash[5]:
-            break;
-            case regexHash[6]:
-            break;
-            case regexHash[7]:
-            break;
-            case regexHash[8]:
-            break;
-            case regexHash[9]:
-            break;
-            case regexHash[10]:
-            break;
-            case regexHash[11]:
-            break;
-            case regexHash[12]:
-            break;
-            default:
-            break;
-        }
+//        switch (inputRegexHash) {
+//            case regexHash[0]:
+//            break;
+//            case regexHash[1]:
+//            break;
+//            case regexHash[2]:
+//            break;
+//            case regexHash[3]:
+//            break;
+//            case regexHash[4]:
+//            break;
+//            case regexHash[5]:
+//            break;
+//            case regexHash[6]:
+//            break;
+//            case regexHash[7]:
+//            break;
+//            case regexHash[8]:
+//            break;
+//            case regexHash[9]:
+//            break;
+//            case regexHash[10]:
+//            break;
+//            case regexHash[11]:
+//            break;
+//            case regexHash[12]:
+//            break;
+//            default:
+//            break;
+//        }
 
         if(relativeTime.contains("today")){
             return result;

@@ -64,6 +64,7 @@ public class Process {
     public void clear(){
         matchedTimes = new ArrayList<MatchedTime>();
         timeBundles = new ArrayList<TimeBundle>();
+        relativeRegexs = new ArrayList<String>();
     }
     
     public List<MatchedTime> getExtractedTimes(){
