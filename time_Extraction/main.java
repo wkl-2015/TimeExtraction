@@ -15,7 +15,7 @@ import java.util.Locale;
 public class main {
     final static String formatterFileName = "./time_Extraction/formatters.txt";
     final static String testFileName = "./time_Extraction/training.txt";
-    final static String articleFileName = "./time_Extraction/test.txt";
+    static String articleFileName = "./time_Extraction/test.txt";
     // 05-06-2015 00:00 AM
     static Calendar referenceTime = Calendar.getInstance();
     static Process processer;
