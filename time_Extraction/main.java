@@ -15,34 +15,55 @@ import java.util.Locale;
 public class main {
     final static String formatterFileName = "./time_Extraction/formatters.txt";
     final static String testFileName = "./time_Extraction/training.txt";
+    final static String articleFileName = "./time_Extraction/test.txt";
     // 05-06-2015 00:00 AM
     static Calendar referenceTime = Calendar.getInstance();
     static Process processer;
+    static boolean test = false;
 
     public static void main(String[] args) {
-        setUp();
-        try (BufferedReader br = new BufferedReader(
-                new FileReader(testFileName))) {
-            int i = 0;
-            for (String line; (line = br.readLine()) != null;) {
-                i++;
-                if (line.length() > 1 && line.substring(0, 2).equals("//")) {
-                    continue;
-                }
-                String[] pair = line.split(" == ");
-                if (pair.length != 2) {
-                    System.out.println("Error test line " + i + " : " + line);
-                    continue;
-                }
-                assertInput(processer, pair[0], pair[1]);
-                processer.clear();
+        if(!test){
+            if(args.length != 2){
+                System.out.println("Warning: Please give two arguments: testFile referenceTime(MM-dd-yyyy)");
+                System.out.println("e.g. run.sh ./test.txt 05-09-2015");
             }
-        } catch (IOException e) {
-            System.out.println("Can not open training file: " + testFileName);
-            e.printStackTrace();
+            else{
+                setUp(args[0], args[1]);
+                processArticle(articleFileName);
+            }      
+        }
+        else{
+            setUp(articleFileName, "05-06-2015");
+            try (BufferedReader br = new BufferedReader(
+                    new FileReader(testFileName))) {
+                int i = 0;
+                for (String line; (line = br.readLine()) != null;) {
+                    i++;
+                    if (line.length() > 1 && line.substring(0, 2).equals("//")) {
+                        continue;
+                    }
+                    String[] pair = line.split(" == ");
+                    if (pair.length != 2) {
+                        System.out.println("Error test line " + i + " : " + line);
+                        continue;
+                    }
+                    assertInput(processer, pair[0], pair[1]);
+                    processer.clear();
+                }
+            } catch (IOException e) {
+                System.out.println("Can not open training file: " + testFileName);
+                e.printStackTrace();
+            }
         }
     }
 
+    private static void processArticle(String articleFileName){
+        processer.extractTimeFromFile(articleFileName);
+        processer.createDateBundles();
+        processer.formatDate();
+        processer.writeResult();
+    }
+    
     private static void assertInput(Process processer, String input,
             String expectedOutput) {
         processer.extractTimeFromInput(input);
@@ -65,25 +86,22 @@ public class main {
             System.out.println("- Incorrect: " + input + " -> "
                     + timeBundles.get(0).getRawValue() + " -> "
                     + normalizedString + " != " + expectedOutput);
-            if (timeBundles.get(0).getDateFormat() != null) {
-                System.out.println(timeBundles.get(0).getDateFormat()
-                        .toPattern());
-            } else if(timeBundles.get(0).getType() == TYPE.ABSOLUTE){
-                System.out.println("no matched format");
-            }
         } else {
-           // System.out.println("+ Correct: " + input + " -> "
-            //        + normalizedString + " == " + expectedOutput);
+            System.out.println("+ Correct: " + input + " -> "
+                    + normalizedString + " == " + expectedOutput);
         }
     }
 
-    private static void setUp() {
-        referenceTime.set(Calendar.YEAR, 2015);
-        referenceTime.set(Calendar.MONTH, 4);
-        referenceTime.set(Calendar.DAY_OF_MONTH, 6);
-        referenceTime.set(Calendar.HOUR, 0);
-        referenceTime.set(Calendar.AM_PM, Calendar.AM);
-        referenceTime.set(Calendar.MINUTE, 0);
+    private static void setUp(String articleName, String rt) {
+        SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
+        Date date = new Date();
+        try{
+            date = format.parse(rt);
+        } catch(ParseException e){
+            System.out.println("The reference time should have the format: MM-dd-yyyy");
+            System.exit(0);
+        }
+        referenceTime.setTime(date);
         processer = new Process(formatterFileName, referenceTime);
     }
 }

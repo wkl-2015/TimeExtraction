@@ -43,10 +43,24 @@ public class RelativeTimeConverter {
             default:
                 break;
             }
-            String[] hhmm = substrings[2].split(":");
-            calendar.set(Calendar.HOUR, Integer.parseInt(hhmm[0]));
-            calendar.set(Calendar.MINUTE, Integer.parseInt(hhmm[1]));
+            if(substrings[2].contains(":")){
+                String[] hhmm = substrings[2].split(":");
+                calendar.set(Calendar.HOUR, Integer.parseInt(hhmm[0]));
+                calendar.set(Calendar.MINUTE, Integer.parseInt(hhmm[1]));
+                return calendar;
+            }
+            else{
+                int hour = Integer.parseInt(substrings[2]);
+                if(hour > 0 && hour < 24){
+                    calendar.set(Calendar.HOUR, hour);
+                    return calendar;
+                }
+                return null;
+            }
+            
+        case "this (week|month|year)":
             return calendar;
+
         case "\\b\\d{1,2} in the (morning|evening)":
             substrings = relativeTime.split(" ");
             delta = Integer.parseInt(substrings[0]);
@@ -361,7 +375,6 @@ public class RelativeTimeConverter {
             return calendar;
         }
 
-      
         System.out.println("- Unconverted: " + relativeTime);
        
         return null;
