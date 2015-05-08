@@ -14,17 +14,17 @@ import java.util.Locale;
 
 public class main {
     final static String formatterFileName = "./time_Extraction/formatters.txt";
-    final static String testFileName = "./time_Extraction/training.txt";
-    static String articleFileName = "./time_Extraction/test.txt";
+    final static String trainingFile = "./time_Extraction/training.txt";
     // 05-06-2015 00:00 AM
     static Calendar referenceTime = Calendar.getInstance();
     static Process processer;
 
     public static void main(String[] args) {
+        // Run the training data.
         if (args.length == 1 && args[0].equals("training")) {
-            setUp(articleFileName, "05-06-2015");
+            setUp("05-06-2015");
             try (BufferedReader br = new BufferedReader(
-                    new FileReader(testFileName))) {
+                    new FileReader(trainingFile))) {
                 int i = 0;
                 for (String line; (line = br.readLine()) != null;) {
                     i++;
@@ -40,12 +40,13 @@ public class main {
                     processer.clear();
                 }
             } catch (IOException e) {
-                System.out.println("Can not open training file: " + testFileName);
+                System.out.println("Can not open training file: " + trainingFile);
                 e.printStackTrace();
             }
         } else if(args.length == 2) {
-            setUp(args[0], args[1]);
-            processArticle(articleFileName);     
+            // Run the test data.
+            setUp(args[1]);
+            processArticle(args[0]);     
         } else {
             System.out.println("Error: need two parameters <article_path> <reference_time>");
             System.out.println("e.g. run.sh ./test.txt 05-06-2015");
@@ -87,11 +88,11 @@ public class main {
         }
     }
 
-    private static void setUp(String articleName, String rt) {
+    private static void setUp(String reference) {
         SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy");
         Date date = new Date();
         try{
-            date = format.parse(rt);
+            date = format.parse(reference);
         } catch(ParseException e){
             System.out.println("The reference time should have the format: MM-dd-yyyy");
             System.exit(0);
