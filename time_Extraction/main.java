@@ -19,20 +19,9 @@ public class main {
     // 05-06-2015 00:00 AM
     static Calendar referenceTime = Calendar.getInstance();
     static Process processer;
-    static boolean test = false;
 
     public static void main(String[] args) {
-        if(!test){
-            if(args.length != 2){
-                System.out.println("Warning: Please give two arguments: testFile referenceTime(MM-dd-yyyy)");
-                System.out.println("e.g. run.sh ./test.txt 05-09-2015");
-            }
-            else{
-                setUp(args[0], args[1]);
-                processArticle(articleFileName);
-            }      
-        }
-        else{
+        if (args.length == 1 && args[0].equals("training")) {
             setUp(articleFileName, "05-06-2015");
             try (BufferedReader br = new BufferedReader(
                     new FileReader(testFileName))) {
@@ -54,6 +43,12 @@ public class main {
                 System.out.println("Can not open training file: " + testFileName);
                 e.printStackTrace();
             }
+        } else if(args.length == 2) {
+            setUp(args[0], args[1]);
+            processArticle(articleFileName);     
+        } else {
+            System.out.println("Error: need two parameters <article_path> <reference_time>");
+            System.out.println("e.g. run.sh ./test.txt 05-06-2015");
         }
     }
 

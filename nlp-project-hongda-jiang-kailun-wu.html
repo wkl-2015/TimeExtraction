@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    margin: 10px 13px 10px 13px;
+}
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+@media screen and (min-width: 768px) {
+    body {
+        width: 748px;
+        margin:10px auto;
+    }
+}
+</style>
+<title>NLP Project: Time Extractor</title>
+
+</head>
+<body>
+<h2>NLP Project: Time Extractor</h2>
+
+<p>Authors: Hongda Jiang (hj690@nyu.edu), Kailun Wu (kailun@nyu.edu)</p>
+
+<h3>Overview</h3>
+
+<p>Time Extractor is a time extraction API that can recognize time expressions and convert them to Java Calendar objects. The workflow is:</p>
+
+<pre><code>Reading articles → Regex Matching → Normalization → Calendar objects
+</code></pre>
+
+<p>Here's a sample of time expressions and extracted date this API can identify, given the reference time of <code>05-06-2015</code>:</p>
+
+<pre><code>mon 2:35 == 05-04-2015 02:35 AM
+4pm == 05-06-2015 04:00 PM
+6 in the morning == 05-06-2015 06:00 AM
+friday 1pm == 05-08-2015 01:00 PM
+sat 7 in the evening == 05-00-2015 07:00 PM
+next month == 06-01-2015 00:00 AM
+17:00 == 05-06-2015 05:00 PM
+January 5 at 7pm == 01-05-2015 07:00 PM
+1979-05-27 05:00 == 05-27-1979 05:00 AM
+</code></pre>
+
+<h3>How to test on an article</h3>
+
+<p>You can use the <code>run.sh</code> script to compile the source code and test on a text body as follows:</p>
+
+<pre><code>$ bash run.sh &lt;article_path&gt; &lt;reference_time&gt;
+</code></pre>
+
+<p>The <code>reference_time</code> should be of the format <code>MM-DD-YYYY</code>. The result can be seen in stdout.</p>
+
+<p>Alternatively, you can test on the training data by running with one argument:</p>
+
+<pre><code>$ bash run.sh training
+</code></pre>
+
+<h3>Performance</h3>
+
+<p>We ran the test on WSJ articles <code>appointments.txt</code> provided by Jet and got 1168 time expressions. The running time is:</p>
+
+<pre><code>real    0m4.309s
+user    0m6.825s
+sys     0m0.269s
+</code></pre>
+
+<p>Thanks for your review!</p>
+</body>
+</html>
