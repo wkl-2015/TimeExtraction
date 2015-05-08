@@ -31,7 +31,7 @@ public class Formatter {
                 return resultDate;
             }
         }
-        System.out.println("- Can't parse this absolute time: " + timeBundle.getRawValue());
+        //System.out.println("- Can't parse this absolute time: " + timeBundle.getRawValue());
         return null;
     }
     

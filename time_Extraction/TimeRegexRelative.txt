@@ -17,9 +17,7 @@ past year
 (earlier |later )?this (morning|noon|afternoon|evening)
 
 // Match a time interval.
-(earlier |later )?this week
-(earlier |later )?this month
-(earlier |later )?this year
+this (week|month|year)
 
 // e.g. sat 7 in the morning
 \b(monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun) \d{1,2} in the morning

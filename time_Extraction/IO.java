@@ -88,12 +88,8 @@ public class IO {
         }
         String pattern = "MM-dd-yyyy h:mm a";
         SimpleDateFormat formatter = new SimpleDateFormat(pattern);
-        System.out.print("** "
-                + formatter.format(timeBundle.getCalendar().getTime()) + " || "
+        System.out.print(formatter.format(timeBundle.getCalendar().getTime()) + " || "
                 + timeBundle.getRawValue());
-        if(timeBundle.getDateFormat() != null){
-            System.out.print(" || " + timeBundle.getDateFormat().toPattern());
-        }
         System.out.println();
     }
 }
